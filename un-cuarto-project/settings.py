@@ -197,6 +197,8 @@ if not DEBUG:
     # SECURE_REDIRECT_EXEMPT = []
     ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # # django-ckeditor will not work with S3 through django-storages without this line in settings.py
