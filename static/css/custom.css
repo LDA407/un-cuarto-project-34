@@ -134,10 +134,10 @@ p {
 section.back {
     /* width: 100%;
     height: 300px; */
-    background: hsla(198, 43%, 11%, 0.753), url(../../static/img/img8.webp);
+    background: hsla(198, 43%, 11%, 0.753), url(../img/img8.webp);
     background: linear-gradient(to right,
             hsla(198, 43%, 11%, 0.753),
-            hsla(198, 44%, 11%, 0.596)), url(../../static/img/img8.webp);
+            hsla(198, 44%, 11%, 0.596)), url(../img/img8.webp);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
