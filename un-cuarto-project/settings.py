@@ -94,7 +94,7 @@ import dj_database_url
 
 
 DATABASES = {
-    "default": env.db("DATABASE_URL"),
+    "default": '',
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 db_from_env = dj_database_url.config(conn_max_age=600)
