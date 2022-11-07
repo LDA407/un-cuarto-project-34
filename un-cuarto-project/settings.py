@@ -79,22 +79,15 @@ WSGI_APPLICATION = 'un-cuarto-project.wsgi.application'
 X_FRAME_OPTIONS = 'DENY'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('DATABASE_NAME'),
-#         'USER': env('DATABASE_USER'),
-#         'PASSWORD': env('DATABASE_PASSWORD'),
-#         'HOST': env('DATABASE_HOST'),
-#         'PORT': env('DATABASE_PORT'),
-#     }
-# }
-
-import dj_database_url
-
-
 DATABASES = {
-    'default': dj_database_url.config(env('DATABASE_URL'),conn_max_age=600)
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': env('DATABASE_NAME'),
+         'USER': env('DATABASE_USER'),
+         'PASSWORD': env('DATABASE_PASSWORD'),
+         'HOST': env('DATABASE_HOST'),
+         'PORT': env('DATABASE_PORT'),
+     }
 }
 
 
