@@ -119,7 +119,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
 
@@ -197,8 +197,8 @@ if not DEBUG:
     # SECURE_REDIRECT_EXEMPT = []
     ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    # STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'staticfiles'),)
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # # django-ckeditor will not work with S3 through django-storages without this line in settings.py
