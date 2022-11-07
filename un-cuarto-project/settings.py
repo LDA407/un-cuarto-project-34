@@ -14,18 +14,13 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = 'RENDER' not in os.environ
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "e98f-186-141-137-251.sa.ngrok.io",
-    "un-cuarto-project.herokuapp.com"]
+ALLOWED_HOSTS = []
 
-# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-# if RENDER_EXTERNAL_HOSTNAME:
-#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -95,20 +90,16 @@ X_FRAME_OPTIONS = 'DENY'
 #     }
 # }
 
-# import dj_database_url
+import dj_database_url
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),}
+    "default": env.db("DATABASE_URL"),
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
-# DATABASES = {
-#     "default": env.db("DATABASE_URL"),
-# }
-# DATABASES["default"]["ATOMIC_REQUESTS"] = True
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
@@ -208,8 +199,8 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
     # STATIC_URL = '/static/'
-    # STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
-    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     # # django-ckeditor will not work with S3 through django-storages without this line in settings.py
     # AWS_QUERYSTRING_AUTH = False
