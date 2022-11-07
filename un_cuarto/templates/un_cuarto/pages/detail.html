@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% comment %} {% block navbar %}
+{% include "un_cuarto/navbar.html" %}
+{% endblock navbar %} {% endcomment %}
+<div class="p-3 shadow-lg mb-5">
+    <section class"">
+    <a href="{% url 'un_cuarto:start_view' %}"
+      class="mb-lg-0 me-lg-auto text-dark text-decoration-none d-flex align-items-center">
+      <span class="fs-4 me-lg-auto fw-bold p-0 ps-2 ps-lg-3 my-auto"><b>UN CUARTO</b></span>
+    </a>
+    </section>
+</div>
+
+<section class=" m-lg-5 mx-md-0 mx-0 my-5">
+    <div class="container p-0">
+        <h3>{{ object.name }}</h3>
+        <div class="mx-auto">
+        <iframe src="{{object.video}}" width="100%" height="500px"></iframe>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

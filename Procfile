@@ -1,0 +1,1 @@
+web: gunicorn un-cuarto-project.wsgi --log-file -

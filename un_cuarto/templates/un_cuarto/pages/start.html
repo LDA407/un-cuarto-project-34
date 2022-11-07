@@ -1,0 +1,177 @@
+{% load static csp crispy_forms_tags %}
+{% block content %}
+  {% block navbar %}
+      {% include "un_cuarto/navbar.html" %}
+  {% endblock navbar %}
+
+  <!-- ======= Hero ======= -->
+  <section id="hero" class="shobwabe textcenter">
+    {% if hero_setting %}
+    {% for obj in hero_setting %}
+    <video class="cont-video" autoplay="autoplay" loop="loop" muted preload="auto">
+      <source src="{{ obj.background_video.url }}" type="video/mp4" />
+    </video>
+    <div class="wrapper d-flex align-items-center w-100 h-100" data-aos="zoom-out">
+      <div class="container mx-auto text-center text-white m-0" data-aos="zoom-out" data-aos-delay="100">
+        <img class="d-block mx-auto mb-4" src="{{ obj.logo.url }}" alt="{{ obj.title }}" width="150px" height="150px" />
+        <h1 class="display-7 fw-normal mb-4 p-0">
+          <b class="fw-bold text-warning">{{ obj.title }}</b>
+        </h1>
+        <p class="lead mb-4 fs-4 fw-normal">{{ obj.subtitle }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </section>
+  {% include "un_cuarto/services.html" %}
+  {% include "un_cuarto/portfolio.html" %}
+
+  {% if showreel %}
+  {% for obj in showreel %}
+  <!-- ======= Showreel ======= -->
+  <section class="showreel px-lg-5 py-5 text-center text-white">
+    <h3 class="display-6 mb-3 fw-bold">{{ obj.section_name }}</h3>
+    <p class="lead mb-5 px-2 ">{{ obj.subtitle }}</p>
+    <div class="container px-lg-5 px-md-2 p-0">
+        <iframe rel="noreferrer noopener" src="{{ obj.video }}?rel=0" width="100%" height="500px"  title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+    {% comment %}
+      <div class="container mx-auto shadow-lg m-3">
+        <video class="" autoplay="autoplay" loop="loop" controls preload="auto" width="100%" height="100%">
+          <source src="{{ obj.video }}" type="video/mp4" />
+        </video>
+      </div>
+      {% endcomment %}  
+    </div>
+  </section>
+  {% endfor %}
+  {% endif %}
+  {% if galery_setting %}
+  {% for obj in galery_setting %}
+  <!-- ======= Galeria Section ======= -->
+  <div class="mb-5 text-center">
+    <style nonce="{{request.csp_nonce}}">
+          .bodyswiper {
+            height: 90%;
+            width: 100%;
+          }
+          .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+          }
+
+          .mySwiper .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+          }
+
+
+          .mySwiper .swiper-slide-thumb-active {
+            opacity: 1;
+          }
+
+          .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+    </style>
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="display-6 fw-bold text-whited">{{ obj.section_name }}</h3>
+      <p class="lead mb-5 px-2">{{ obj.subtitle }}</p>
+    </div>
+    <div class="container-xxl">
+      <div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-1 m-0 p-0" data-aos="fade-up" data-aos-delay="200"> 
+        {% for obj in galery %}
+        <div class="col p-0 m-0">
+          <div class="custom-card">
+            <figure class="img-box-content m-0">
+              <a href="{{ obj.image.url }}" class="glightbox">
+                <img src="{{obj.image.url}}" class="bd-placeholder-img card-img-top" width="100%" alt="imagen_portada" />
+              </a>
+            </figure>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- End Galery Section -->
+  {% endfor %}
+  {% endif %}
+  <!-- ======= Comentarios ======= -->
+  <section class="back">
+    <div class="container col-xxl-8 py-5">
+      <h3 class="display-6 fw-bold">{{ obj.section_name }}</h3>
+      <div class="text-center">
+        <h3 class="display-6 fw-bol text-whited">{{ obj.section_name }}</h3>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4 text-secondary">{{ obj.subtitle }}</p>
+        </div>
+        <p class="fs-5 mb-4 fw-normal"></p>
+      </div>
+      {% include "un_cuarto/comments.html" %}
+    </div>
+  </section>
+  {% include "un_cuarto/about.html" %}
+  
+  <div class="b-example-divider"></div>
+  {% if contact %}
+  {% for obj in contact %}
+  <!-- ======= Contacto ======= -->
+  <section id="contacto" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="display-6 fw-bold text-whited">{{ obj.section_name }}</h3>
+        <p class="lead mb-2">{{ obj.subtitle }}</p>
+      </div>
+      <!-- ======= Formulario contacto ======= -->
+      <div class="row justify-content-center align-items-strecht g-4 g-lg-5 p-0 m-0 flex-lg-row-reverse">
+        <section
+          class="col-12 col-lg-4 col-md-12 bg-dark rounded-3 p-3"
+          data-aos="zoom-in" data-aos-delay="100">
+          {% if social_links %}
+          {% for link in social_links %}
+          <h3 class="display-6 fw-bold text-warning">{{ link.section_name }}</h3>
+          <p class="text-warning">{{ link.subtitle }}</p>
+          {% for obj in contact %}
+          <a
+            href="https://wa.me/{{ obj.whatsapp }}?text=Hola%20necesito%20mas%20información."
+            rel="noopener noreferrer"
+            target="_blank"
+            class="d-flex align-items-center text-decoration-none fw-normal text-warning ps-0"
+          >
+            <i class="bi bi-whatsapp pe-2"></i>
+            <b>Phone:</b>
+            <small class="lh-1 m-0 ps-2"> {{ obj.whatsapp }}</small>
+          </a>
+          <a
+            href="mailto:{{ obj.email }}"
+            class="d-flex align-items-center text-decoration-none fw-normal text-warning ps-0"
+          >
+            <i class="bi bi-envelope-fill pe-2"></i>
+            <b>Email:</b>
+            <small class="lh-1 m-0 ps-2"> {{ obj.email }}</small>
+          </a>
+          {% endfor %}
+          {% endfor %}
+          {% endif %}
+        </section>
+        <section
+          class="col-12 col-lg-8 col-md-12  flex-md-column-reverse"
+          data-aos="fade-up" data-aos-delay="100">
+          {% include '../contact.html' %}
+        </section>
+      </div>
+	  </div>
+  </section>
+  {% endfor %}
+  {% endif %}
+  <!-- ======= Footer ======= -->
+  {% block footer %}
+    {% include "un_cuarto/footer.html" %}
+  {% endblock footer %}
+{% endblock content %}

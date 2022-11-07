@@ -1,0 +1,43 @@
+{% load static %}
+<!-- ======= Portafolio ======= -->
+<div id="portafolio" class="bg-ligth py-5">
+  <div class="container-xxl">
+    <article
+      class="col-lg-10 mx-auto mb-5"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      {% if port_setting %}
+      {% for obj in port_setting %}
+      <h3 class="display-6 fw-bold text-center">{{obj.section_name}}</h3>
+      <p class="lead text-center">{{obj.subtitle}}</p>
+      {% endfor %}
+      {% endif %}
+    </article>
+    <div class="row row-cols-xl-3 row-cols-lg-3 row-cols-md-2 row-cols-1" data-aos="fade-up" data-aos-delay="200">
+      {% for obj in cartera %}
+      <div class="col p-0 m-0">
+        <div class="custom-card">
+          <figure class="img-box-content m-0">
+            <img
+              src="{{obj.thumbnails.url}}"
+              class="bd-placeholder-img card-img-top"
+              width="100%"
+              alt="imagen_portada"
+            />
+          </figure>
+          <figcaption class="text-center">
+              <h5 class="text-warning">{{obj.name}}</h5>
+              <a
+                href="{% url 'un_cuarto:detail' obj.pk %}"
+                target="_blank"
+                class="text-warning display-3 bi bi-play-circle-fill">
+              {% comment %}  <i class="bi bi-play-circle-fill"></i> {% endcomment %}
+              </a>
+          </figcaption>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

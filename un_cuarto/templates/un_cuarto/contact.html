@@ -1,0 +1,68 @@
+{% load crispy_forms_tags %}
+{% block messages %} 
+{% include "un_cuarto/messages.html" %}
+{% endblock messages %}
+<!-- ======= Formulario contacto ======= -->
+<section>
+  <form id="ContactForm" method="post">
+    {% csrf_token %}
+    {{ contactform|crispy }}
+    {% comment %} <section class="form-group">
+      <script
+        type="text/javascript"
+        src="https://www.google.com/recaptcha/api.js"
+      ></script>
+      <div
+        class="g-recaptcha"
+        data-theme="light"
+        data-callback="SendToken"
+        data-sitekey="6LfunwggAAAAAHZAtdTFu2OFQhO2KYXmFn3jidpy"
+        required=""
+        id="id_captcha"
+        data-widget-uuid="eb43d759e285473ba6ceb61bac8ee4da"
+        data-size="normal"
+      ></div>
+    </section> {% endcomment %}
+    <div class="buttonHolder">
+      <input
+        type="submit"
+        name="Submit"
+        value="Submit"
+        class="btn btn-primary"
+        id="submit_id"
+      />
+      <input
+        type="reset"
+        name="Reset"
+        value="Reset"
+        class="btn btn-success"
+        id="reset_id"
+      />
+    </div>
+  </form>
+</section>
+
+{% comment %}
+{% block extrajs %}
+<script type="text/javascript">
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  document.body.addEventListener('configRequest.htmx', (event) => {
+    event.detail.headers['X-CSRFToken'] = csrfToken;
+  })
+
+  function SendToken(token) {
+    return fetch("", {
+      method: "post",
+      body: JSON.stringify(token),
+      headers: {
+        'CONTENT_TYPE': 'aplication/json',
+        'X-CSRFToken': csrfToken,
+      },
+      mode: 'same-origin',
+    })
+    .then((response) => response.json())
+    .then(res =>)
+  }
+</script>
+{% endblock %}
+{% endcomment %}

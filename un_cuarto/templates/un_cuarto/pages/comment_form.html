@@ -1,0 +1,164 @@
+
+{% load static csp sri crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <!--=== Bootstrap core CSS ===-->
+    <link href="" rel="icon" />
+    {% sri_static "vendor/aos/aos.css" %}
+    {% sri_static "vendor/bootstrap/css/bootstrap.min.css" %}
+    {% sri_static "vendor/bootstrap/css/bootstrap-reboot.min.css" %}
+    {% sri_static "vendor/bootstrap-icons/bootstrap-icons.css" %}
+    <!--=== Swiper's CSS ===-->
+    {% sri_static "vendor/swiper/swiper-bundle.min.css" %}
+    {% sri_static "css/custom.css" %}
+    {% sri_static "css/jquery-ui.css" %}
+    {% if hero_setting %}
+    {% for obj in hero_setting %}
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ obj.logo.url }}"
+    />
+    {% endfor %}
+    {% endif %} 
+    <!-- ======= Meta ======= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block meta %}
+    {% for obj in meta_settings %}
+    <title>{{ obj.title }}</title>
+    <meta
+      name="description"
+      content="{{ obj.description_site }}"
+    />
+    <meta name="keywords" content="{{ obj.keyword }}" />
+    <meta name="author" content="" />
+    <meta name="copyright" content="{{ obj.copyright_site }}, {{ obj.copyright_url }}" />
+    <!--===== Etiquetas Open Graph =====-->
+    <meta property="og:type" content="Web site" />
+    <meta property="og:locale" content="es_ES" />
+    <meta
+      property="og:site_name"
+      content="{{ site_name }}"
+    />
+    <meta property="og:description" content="{{ obj.description_site }}" />
+    <meta property="og:url" content="{{ canonical_links }}" />
+    <meta property="og:title" content="{{ obj.title }}" />
+    <meta
+      property="og:image"
+      content="{{ obj.spotimage }}"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <!--===== Etiquetas Twitter =====-->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:description" content="{{ obj.description_site }}" />
+    <meta name="twitter:title" content="{{ obj.title }}" />
+    <meta name="twitter:site" content="{{ canonical_links }}" />
+    <meta name="twitter:image" content="{{ obj.spotimage }}" />
+    <meta name="twitter:creator" content="{{ obj.copyright_site }}" />
+    {% endfor %}
+    {% endblock meta %}
+    <link
+      rel="canonical"
+      href="{{ canonical_links }}"
+    />
+  </head>
+
+  <body>
+    {% block navbar %}
+        {% include "un_cuarto/navbar.html" %}
+    {% endblock navbar %}
+    <section class="mt-5 py-5"></section>
+    <section>
+        <div class="container">
+        <h2 class="mb-3 fw-bold">Comentanos que tal te fue con nosotros</h2>
+        <form class="mb-5" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="buttonHolder">
+              <input
+                type="submit"
+                name="Submit"
+                value="Submit"
+                class="btn btn-primary"
+                id="submit_id"
+              />
+              <input
+                type="reset"
+                name="Reset"
+                value="Reset"
+                class="btn btn-success"
+                id="reset_id"
+              />
+            </div>
+        </form>
+        </div>
+    </section>
+    <!-- ======= Scripts ======= -->
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'js/main.js' %}"
+    ></script>
+    <!-- ======= jQuery ======= -->
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'js/jquery-3.3.1.min.js' %}"
+    ></script>
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'js/jquery-ui.js' %}"
+    ></script>
+    <!-- ======= Bootstrap ======= -->
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'vendor/aos/aos.js'  %}"
+    ></script>
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"
+      defer
+    ></script>
+    <script
+      nonce="{{request.csp_nonce}}"
+      src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"
+      defer
+    ></script>
+    <script nonce="{{request.csp_nonce}}" defer>
+      AOS.init({ once: false });
+    </script>
+    <!-- ======= Navbar Movile ======= -->
+    <nav
+      class="navbar fixed-bottom navbar-dark bg-dark position-fixed"
+      tabindex="-2"
+      aria-labelledby="NavbarFixedBottom"
+      aria-hidden="true"
+    >
+      <section class="container">
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <section class="p-5">ashdbjsdbjh</section>
+          <ul class="navbar-nav text-center">
+            <li class="nav-item">
+              <a class="nav-link text-warning" aria-current="page" href="{% url 'un_cuarto:start_view' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="#servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="#portafolio">Portafolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="#nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-warning" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </nav>
+  </body>
+</html>
+

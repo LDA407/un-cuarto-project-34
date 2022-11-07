@@ -1,0 +1,70 @@
+<!-- ======= Header Main======= -->
+<header class="bg-white border-bottom fixed-sm-top">
+  <!-- ======= Topbar social links ======= -->
+  <section class="bg-dark text-white">
+    <div class="container py-2 d-flex justify-content-between">
+      <!-- ======= Left Column ======= -->
+      <section class="contact-info text-warning">
+        {% for obj in contact %}
+        <a href="mailto:{{ obj.email }}"
+          class="d-flex align-items-center text-decoration-none fw-normal text-warning ps-2">
+          <i class="bi bi-envelope-fill pe-2"></i>
+          <small class="d-none d-md-flex lh-1 m-0">{{ obj.email }}</small>
+        </a>
+        {% endfor %}
+      </section>
+      <!-- ======= Right column ======= -->
+      <!-- <section class="social-links d-md-flex align-items-center"> -->
+      <section class="social-links">
+        {% if social_links %}
+        {% for link in social_links %}
+        <a href="{{ link.twitter }} " target="_blank" class="mx-2 twitter"><i class="bi bi-twitter text-warning"></i></a>
+        <a href="{{ link.facebook }} " target="_blank" class="mx-2 facebook"><i class="bi bi-facebook text-warning"></i></a>
+        <a href="{{ link.instagram }} " target="_blank" class="mx-2 instagram"><i class="bi bi-instagram text-warning"></i></a>
+        <a href="{{ link.linkedin }} " target="_blank" class="mx-2 linkedin"><i class="bi bi-linkedin text-warning"></i></a>
+        {% endfor %}
+        {% endif %}
+      </section>
+    </div>
+  </section>
+  <!-- ======= Header ======= -->
+  <section class="content-navbar container d-flex flex-wrap justify-content-between py-2">
+    <a href="{% url 'un_cuarto:start_view' %}"
+      class="mb-lg-0 me-lg-auto text-dark text-decoration-none d-flex align-items-center">
+      {% if hero_setting %}
+      {% for obj in hero_setting %}
+      <img class="d-block mx-auto" src="{{ obj.logo.url }}" alt="{{ obj.title }}" width="50px" height="50px"/>
+      {% endfor %}
+      {% endif %}
+      <span class="fs-4 me-lg-auto fw-bold p-0 ps-2 ps-lg-3 my-auto"><b>UN CUARTO</b></span>
+    </a>
+    <!-- ======= Navbar ======= -->
+    <nav class="navbar navbar-expand-lg navbar-light" aria-label="Fifth navbar example">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+            role="Icono menu" width="40" height="40" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" fill="black"></path>
+        </svg>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav navheader mb-lg-0">
+          <li class="nav-item px-2 item">
+            <a class="nav-link fw-bold" aria-current="page" href="{% url 'un_cuarto:start_view' %}">Inicio</a>
+          </li>
+          <li class="nav-item px-2 item">
+            <a class="nav-link fw-bold" href="#servicios">Servicios</a>
+          </li>
+          <li class="nav-item px-2 item">
+            <a class="nav-link fw-bold" href="#portafolio">Portafolio</a>
+          </li>
+          <li class="nav-item px-2 item">
+            <a class="nav-link fw-bold" href="#nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item px-2 item">
+            <a class="nav-link fw-bold" href="#contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+</header>

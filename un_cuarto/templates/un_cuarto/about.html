@@ -1,0 +1,77 @@
+{% block about %}
+<!-- ======= Nosotros ======= -->
+{% load static %}
+<section id="nosotros" class="container my-5 px-0" data-aos="fade-up">
+  <section class="text-center">
+    {% if nos_setting %}
+    {% for obj in nos_setting %}
+    <h3 class="display-6 fw-bold">{{ obj.section_name }}</h3>
+    <div class="col-lg-10 mx-auto">
+      <p class="lead">{{ obj.subtitle }}</p>
+    </div>
+    <div class="row m-0 px-0 py-5">
+      <div class="col-lg-6 p-0 p-lg-2" data-aos="fade-right" data-aos-delay="100">
+        <img src="{% static 'img/img6.webp' %}" class="img-about" alt="" />
+      </div>
+      <div
+        class="col-lg-6 pt-4 pt-lg-0 content text-start"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <h3>{{ obj.titulo }}</h3>
+        <p class="fst-italic">{{ obj.info }}</p>
+          <div class="mb-2">
+              <h5>{{ obj.title_mision }}</h5>
+              <p class="ps-3">{{ obj.mision }}</p>
+          </div>
+          <div class="mb-2">
+              <h5>{{ obj.title_vision }}</h5>
+              <p class="ps-3">{{ obj.vision }}</p>
+          </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </section>
+  <div class="pb-5 text-center">
+    {% if team_setting %}
+    {% for obj in team_setting %}
+    <h3 class="display-6 fw-bold">{{ obj.section_name }}</h3>
+    <p class="lead">{{ obj.subtitle }}</p>
+    {% endfor %}
+    {% endif %}
+    <div class="row m-0 g-lg-4 g-md-3 g-3 justify-content-lg-start justify-content-md-start justify-content-center">
+      {% for obj in members %}
+      <div class="col-10 col-lg-3 col-md-4">
+        <div class="card shadow-lg">
+          <figure class="member-img">
+            <img
+              src="{{ obj.thumbnails.url }}"
+              class="bd-placeholder-img card-img-top"
+              alt=""
+              width="auto"
+              height="225"
+              role="img"
+              aria-label="Placeholder: Thumbnail"
+            />
+          </figure>
+
+          <div class="card-body">
+            <h4 class="card-tittle">{{ obj.name }}</h4>
+            <p class="card-text">{{ obj.possition }}</p>
+            {% comment %}
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="{{obj.twiter}}"><i class="bi bi-twitter"></i></a>
+              <a href="{{obj.facebook}}"><i class="bi bi-facebook"></i></a>
+              <a href="{{obj.instagram}}"><i class="bi bi-instagram"></i></a>
+              <a href="{{obj.linkedin}}"><i class="bi bi-linkedin"></i></a>
+            </div>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock about %}

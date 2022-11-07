@@ -1,0 +1,26 @@
+{% load static %}
+<!-- ======= Servicios ======= -->
+<section id="servicios" class="bg-dark">
+  <div class="container py-5">
+    <div class="text-center pb-4 mx-auto" data-aos="fade-up" data-aos-delay="100">
+      {% if services_setting %}
+      {% for obj in services_setting %}
+      <h3 class="display-6 fw-bold text-center text-warning">
+        {{ obj.section_name }}
+      </h3>
+      <p class="lead text-center text-white-50">{{ obj.subtitle }}</p>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="text-secondary">
+      <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+        {% for obj in services %}
+        <div class="col p-3" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="text-warning">{{ obj.name }}</h4>
+          <p>{{ obj.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

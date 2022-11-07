@@ -1,0 +1,40 @@
+<style nonce="{{request.csp_nonce}}">
+      
+      .main {
+        position: relative;
+        height: 100%;
+      }
+
+      .main {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main .Swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+
+
+    </style>
+  </head>
+
+  <section class="main">
+    <!-- Swiper -->
+    <div class="swiper mySwiper3">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          {% for obj in galery %}
+            <img src="{{ obj.image.url }}" alt="{{ obj.name }}" />
+          {% endfor %}
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>

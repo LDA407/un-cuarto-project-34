@@ -1,0 +1,31 @@
+{% load static %}
+<section>
+  <div class="swiper">
+    <div class="swiper-wrapper mb-5">
+      {% for obj in comentarios %}
+      <section class="swiper-slide">
+      <div class="col-12 col-md-12 col-lg-8 mx-auto">
+        <div class="card mb-3 mx-auto">
+          <div class="row g-0">
+            <figure class="col-md-4 cardcoments p-2 m-0">
+              <img src="{{ obj.foto.url }}" class="img-about rounded-fill" alt="...">
+            </figure>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="display-6 fw-bold">{{ obj.nombre }}</h5>
+                <p class="card-text">
+                  <small class="text-muted fs-5">{{ obj.posicion }}</small>
+                </p>
+                <p class="card-text fs-5">{{obj.comentario}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
