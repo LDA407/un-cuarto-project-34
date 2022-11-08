@@ -165,7 +165,7 @@ CSP_MEDIA_SRC = ("'self'",
 
 DEFAULT_FROM_EMAIL = 'webuncuarto@gmail.com'
 
-USE_SRI=True
+USE_SRI=False
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
