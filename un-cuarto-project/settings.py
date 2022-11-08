@@ -120,7 +120,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSP_DEFAULT_SRC="'self'"
-CSP_STYLE_SRC = ["'self'",]
+CSP_STYLE_SRC = ["'self'","cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"]
 CSP_IMG_SRC = ("'self'",
     # "i.ytimg.com/",
 	# "www.google-analytics.com",
@@ -129,7 +129,7 @@ CSP_IMG_SRC = ("'self'",
 CSP_SCRIPT_SRC = ("'self'",
     # "cdn.plyr.io/3.6.12/plyr.js",
     "www.youtube.com",
-    # "www.youtube.com/iframe_api",
+    "cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js",
     # "www.youtube.com/s/player/03bec62d/www-widgetapi.vflset/www-widgetapi.js"
 	# "ajax.cloudflare.com",
 	# "static.cloudflareinsights.com",
