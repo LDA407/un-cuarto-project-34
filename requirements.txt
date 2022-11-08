@@ -2,8 +2,7 @@ Django==3.2.16
 django-crispy-forms==1.14.0
 django-csp==3.7
 django-environ==0.9.0
-django-sri==0.4.0
-django-heroku
+django-sri==0.3.0
 gunicorn==20.1.0
 Pillow==9.2.0
 whitenoise
