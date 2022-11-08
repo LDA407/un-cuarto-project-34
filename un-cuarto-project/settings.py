@@ -188,7 +188,7 @@ if not DEBUG:
     # SECURE_REDIRECT_EXEMPT = []
     ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
 
